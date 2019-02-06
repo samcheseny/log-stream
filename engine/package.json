@@ -1,0 +1,21 @@
+{
+  "name": "log-stream",
+  "version": "1.0.0",
+  "description": "A service for streaming system logs to various interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samcheseny/log-stream/engine"
+  },
+  "keywords": [
+    "logs",
+    "streams",
+    "UI",
+    "Redis"
+  ],
+  "author": "Samuel Ndara <ndarasam@gmail.com>",
+  "license": "ISC"
+}
