@@ -1,26 +1,26 @@
 const {Model} = require('./model');
 
-class Client extends Model {
+class Application extends Model {
 
     constructor() {
 
         super();
 
-        this.table = "clients";
+        this.table = "applications";
 
         this.primaryKey = "id";
 
         this.model = {
             id: "",
             name: "",
-            secret: "",
+            description: "",
+            serverID: "",
             active: false,
             createdAt: "",
             updatedAt: ""
         };
 
     }
-
 }
 
-module.exports = Client;
+module.exports = Application;

@@ -1,26 +1,25 @@
 const {Model} = require('./model');
 
-class Client extends Model {
+class LogLevel extends Model {
 
     constructor() {
 
         super();
 
-        this.table = "clients";
+        this.table = "logLevels";
 
         this.primaryKey = "id";
 
         this.model = {
             id: "",
-            name: "",
-            secret: "",
+            level: "",
+            description: "",
             active: false,
             createdAt: "",
             updatedAt: ""
         };
 
     }
-
 }
 
-module.exports = Client;
+module.exports = LogLevel;

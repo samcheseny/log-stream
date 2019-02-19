@@ -1,26 +1,28 @@
 const {Model} = require('./model');
 
-class Client extends Model {
+class Stream extends Model {
 
     constructor() {
 
         super();
 
-        this.table = "clients";
+        this.table = "streams";
 
         this.primaryKey = "id";
 
         this.model = {
             id: "",
             name: "",
-            secret: "",
+            description: "",
+            apiEndpoint: "",
+            accessConfiguration: "",
             active: false,
             createdAt: "",
             updatedAt: ""
         };
 
     }
-
 }
 
-module.exports = Client;
+//A stream has many log levels,
+module.exports = Stream;
