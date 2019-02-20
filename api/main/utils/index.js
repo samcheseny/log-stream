@@ -15,6 +15,21 @@ exports.getUniqueID = (length) => {
 
 exports.generateUUID = () => uuid();
 
+exports.isObjectEmpty = (object) => (Object.getOwnPropertyNames(object).length === 0);
+
+function isEmpty(object) {
+
+    for (let key in object) {
+
+        if (object.hasOwnProperty(key)) {
+            return false;
+        }
+
+    }
+
+    return true;
+}
+
 function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
