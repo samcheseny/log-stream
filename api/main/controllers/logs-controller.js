@@ -37,13 +37,20 @@ class LogsController {
             errors["applicationID"] = "ApplicationID is missing from the payload";
         }
 
-        if (data.serverID === "" || data.serverID === undefined || data.serverID === null) {
-            errors["serverID"] = "ServerID is missing from the payload";
+        if (data.logLevelID === "" || data.logLevelID === undefined || data.logLevelID === null) {
+            errors["logLevelID"] = "LogLevelID is missing from the payload";
+        }
+
+        if (data.logPath === "" || data.logPath === undefined || data.logPath === null) {
+            errors["logPath"] = "LogPath is missing from the payload";
         }
 
         if (!utils.isObjectEmpty(errors)) {
             return response.status(422).send(errors);
         }
+
+        //Todo: Add validation to check if file exist or the
+        // engine to create file if it does not exist
 
         return log.save(data)
             .then(log => response.status(201).json(log))
