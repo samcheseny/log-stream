@@ -57,6 +57,49 @@ class LogsController {
             .catch(error => response.status(400).send(error));
     }
 
+    filter(request, response) {
+
+        let data = {
+            applicationIDs: request.body.applicationIDs || [],
+            logLevelIDs: request.body.logLevelIDs || [],
+            serverIDs: request.body.serverIDs || [],
+        };
+
+        let errors = {};
+
+        if (!Array.isArray(data.applicationIDs)) {
+            errors["applicationIDs"] = "ApplicationIDs should be an array";
+        }
+
+        if (!Array.isArray(data.logLevelIDs)) {
+            errors["logLevelIDs"] = "LogLevelIDs should be an array";
+        }
+
+        if (!Array.isArray(data.serverIDs)) {
+            errors["serverIDs"] = "ServerIDs should be an array";
+        }
+
+        if (data.serverIDs.length > 0 && !data.serverIDs.every(utils.isNumber)) {
+            errors["serverIDs"] = "ServerIDs should be an array of numbers";
+        }
+
+        if (data.logLevelIDs.length > 0 && !data.logLevelIDs.every(utils.isNumber)) {
+            errors["logLevelIDs"] = "LogLevelIDs should be an array of numbers";
+        }
+
+        if (data.applicationIDs.length > 0 && !data.applicationIDs.every(utils.isNumber)) {
+            errors["applicationIDs"] = "ApplicationIDs should be an array of numbers";
+        }
+
+        if (!utils.isObjectEmpty(errors)) {
+            return response.status(422).send(errors);
+        }
+
+        return new Log().filter(data)
+            .then(logs => response.status(201).json(logs))
+            .catch(error => response.status(400).send(error));
+    }
+
 }
 
 module.exports = new LogsController();

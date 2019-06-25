@@ -15,7 +15,19 @@ exports.getUniqueID = (length) => {
 
 exports.generateUUID = () => uuid();
 
+exports.filterEmptyValues = (object) => {
+
+    for (let key in object) {
+        if (object[key].length < 1) {
+            delete object[key];
+        }
+    }
+
+};
+
 exports.isObjectEmpty = (object) => (Object.getOwnPropertyNames(object).length === 0);
+
+exports.isNumber = (value) => typeof value === "number";
 
 exports.isEmpty = (object) => {
 
